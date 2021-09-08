@@ -1,5 +1,5 @@
 <template>
-  <div class="table-wrapper">
+  <div class="table-wrapper table-responsive">
     <table class="table-w" :class="`${className} table-wrapper`">
       <slot></slot>
     </table>

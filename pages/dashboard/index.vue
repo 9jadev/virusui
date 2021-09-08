@@ -1,6 +1,6 @@
 <template>
     <div class="container m-2">
-        <h1 class="my-4 leading">Billstonic dashboard </h1>
+        <h1 class="my-4 leading">Time Table </h1>
         <div class="row my-4">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat aliquam numquam dolores magni aspernatur, iure nam veritatis laudantium nostrum aliquid error, fuga, modi veniam esse corrupti molestias molestiae nesciunt et?
         </div>
