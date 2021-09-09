@@ -30,6 +30,17 @@
                 </div>
             </NuxtLink>
 
+            <NuxtLink to="/dashboard/venues" class="textunderline">
+                <div class="sidenav my-3">
+                    <div class="sideicon">
+                        <b-icon font-scale="1.3" icon="cloud-download-fill" variant="primary" aria-hidden="true"></b-icon>
+                    </div>
+                    <div class="sidelink">
+                        <span class="h5 text-center">Venues</span>
+                    </div>   
+                </div>
+            </NuxtLink>
+
             
 
             <div v-b-toggle.payments class="sidenav mb-3">

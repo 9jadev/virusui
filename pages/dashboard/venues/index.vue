@@ -2,7 +2,7 @@
     <div class="container m-2">
         <h1 class="my-4 leading">Course </h1>
         <div class="row mx-2 my-4">
-            List of all courses.
+            List of all venues.
         </div>
          <b-overlay :show="tableloading" rounded="sm">
             <div class="row my-4">
@@ -20,29 +20,29 @@
                                                 <b-form @submit="onSubmit" @reset="onReset">
                                                     <b-form-group
                                                         id="input-group-1"
-                                                        label="Course Code:"
+                                                        label="Venue Name:"
                                                         label-for="input-1"
-                                                        description="Course code is required"
+                                                        description="A venue name is required"
                                                     >
                                                         <b-form-input
                                                         id="input-1"
-                                                        v-model="course.course_code"
+                                                        v-model="venue.name"
                                                         type="text"
-                                                        placeholder="Course Code"
+                                                        placeholder="Venue Name"
                                                         required
                                                         ></b-form-input>
                                                     </b-form-group>
 
                                                     <b-form-group
                                                         id="input-group-1"
-                                                        label=" Course Description:"
+                                                        label=" Venue Description:"
                                                         label-for="input-1"
                                                         description="A description is required"
                                                     >
                                                         <b-form-textarea
                                                             id="textarea"
-                                                            v-model="course.description"
-                                                            placeholder="Course Description"
+                                                            v-model="venue.description"
+                                                            placeholder="Venue Description"
                                                             rows="3"
                                                             max-rows="6"
                                                         ></b-form-textarea>
@@ -75,7 +75,7 @@
                             <tbody v-if="courses.length != 0">
                                 <tr v-for="(course, index) in courses" :key="index">
                                     <th> {{ index+1 }} </th>
-                                    <td> {{ course.course_code }} </td>
+                                    <td> {{ course.name }} </td>
                                     <td> {{ course.description }} </td>
                                     <td>
                                         <b-button size="sm" variant="primary">More</b-button>
@@ -126,8 +126,8 @@ export default {
             to: null,
             from: null,
             total: null,
-            course: {
-                course_code: "",
+            venue: {
+                name: "",
                 description: ""
             }
         }
@@ -139,7 +139,7 @@ export default {
         onSubmit(event) {
             event.preventDefault()
             this.show = true
-            this.$axios.post(`${process.env.baseUrl}courses/create`,this.course).then((res) => {
+            this.$axios.post(`${process.env.baseUrl}venues/create`,this.venue).then((res) => {
                 if (res.data.status == "success") {
                     this.$bvToast.toast(`${res.data.message}`, {
                         title: `Successfully`,
@@ -165,25 +165,25 @@ export default {
         onReset(event) {
             event.preventDefault()
             // Reset our form values
-            this.course.course_code = ''
-            this.course.description = ''
+            this.venue.name = ''
+            this.venue.description = ''
              this.$bvModal.hide("my-modal");
         },
         loaddata() {
             this.tableloading = true
-            this.$axios.post(`${process.env.baseUrl}courses/all`,
+            this.$axios.post(`${process.env.baseUrl}venues/all`,
                 {'page_number': this.page_number}
             ).then((res) => {
                 this.tableloading = false;
-                console.log(res.data.courses)
-                this.courses = res.data.courses.data
-                this.first_page_url = res.data.courses.first_page_url
-                this.last_page_url = res.data.courses.last_page_url
-                this.next_page_url = res.data.courses.next_page_url
-                this.prev_page_url = res.data.courses.prev_page_url
-                this.to = res.data.courses.to
-                this.from = res.data.courses.from
-                this.total = res.data.courses.total
+                console.log(res.data.venue)
+                this.courses = res.data.venue.data
+                this.first_page_url = res.data.venue.first_page_url
+                this.last_page_url = res.data.venue.last_page_url
+                this.next_page_url = res.data.venue.next_page_url
+                this.prev_page_url = res.data.venue.prev_page_url
+                this.to = res.data.venue.to
+                this.from = res.data.venue.from
+                this.total = res.data.venue.total
             }).catch((err)  => {
                 this.tableloading = false;
             });
