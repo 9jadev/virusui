@@ -4,7 +4,7 @@
         <div class="row mx-2 my-4">
             List of all venues.
         </div>
-         <b-overlay :show="tableloading" rounded="sm">
+        <b-overlay :show="tableloading" rounded="sm">
             <div class="row my-4">
                 <div class="col-md-12 p-4">
                     <div class="shadow-lg mb-5 table-wrapper">
